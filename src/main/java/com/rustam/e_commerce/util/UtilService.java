@@ -4,16 +4,11 @@ import com.rustam.e_commerce.dao.entity.Cart;
 import com.rustam.e_commerce.dao.entity.Category;
 import com.rustam.e_commerce.dao.entity.Favorite;
 import com.rustam.e_commerce.dao.entity.Product;
-import com.rustam.e_commerce.dao.entity.user.Admin;
-import com.rustam.e_commerce.dao.entity.user.BaseUser;
-import com.rustam.e_commerce.dao.entity.user.Employee;
-import com.rustam.e_commerce.dao.entity.user.User;
+import com.rustam.e_commerce.dao.entity.user.*;
 import com.rustam.e_commerce.dao.repository.*;
 import com.rustam.e_commerce.dto.TokenPair;
 import com.rustam.e_commerce.exception.custom.*;
 import com.rustam.e_commerce.util.jwt.JwtUtil;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -42,6 +37,7 @@ public class UtilService {
     CartRepository cartRepository;
     FavoriteRepository favoriteRepository;
     RedisTemplate<String,String> redisTemplate;
+    private final VendorRepository vendorRepository;
 
     public BaseUser findByUsername(String username) {
         return baseUserRepository.findByUsername(username)
@@ -193,4 +189,13 @@ public class UtilService {
     public List<Product> findByProductInCategoryId(Long categoryId) {
         return productRepository.findByCategoryId(categoryId);
     }
+   /* public Vendor findByVendorId(UUID id) {
+        return vendorRepository.findById(id)
+                .orElseThrow(() -> new VendorNotFoundException("No such vendor found."));
+    }*/
+    public List<BaseUser> findAllExistVendor() {
+        return baseUserRepository.findAllVendor();
+    }
+
+
 }

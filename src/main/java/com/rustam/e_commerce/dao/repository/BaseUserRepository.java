@@ -4,6 +4,7 @@ import com.rustam.e_commerce.dao.entity.enums.Role;
 import com.rustam.e_commerce.dao.entity.user.Admin;
 import com.rustam.e_commerce.dao.entity.user.BaseUser;
 import com.rustam.e_commerce.dao.entity.user.User;
+import com.rustam.e_commerce.dao.entity.user.Vendor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -19,6 +20,9 @@ public interface BaseUserRepository extends JpaRepository<BaseUser, UUID> {
 
     @Query(value = "SELECT * from base_users where user_type = 'USER'",nativeQuery = true)
     List<User> findAllUser();
+    //vendor əlavə etdim
+    @Query(value = "SELECT * from base_users where user_type = 'VENDOR'",nativeQuery = true)
+    List<BaseUser> findAllVendor();
 
     @Query(value = "SELECT * from base_users where user_type = 'ADMIN'",nativeQuery = true)
     List<Admin> findAllAdmin();
