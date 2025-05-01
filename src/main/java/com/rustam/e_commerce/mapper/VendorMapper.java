@@ -1,9 +1,7 @@
 package com.rustam.e_commerce.mapper;
 
 import com.rustam.e_commerce.dao.entity.user.BaseUser;
-import com.rustam.e_commerce.dao.entity.user.User;
-import com.rustam.e_commerce.dao.entity.user.Vendor;
-import com.rustam.e_commerce.dto.response.EmployeeResponse;
+import com.rustam.e_commerce.dto.response.VendorCreateResponse;
 import com.rustam.e_commerce.dto.response.VendorResponse;
 import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
@@ -21,4 +19,7 @@ import static org.mapstruct.MappingConstants.ComponentModel.SPRING;
 public interface VendorMapper {
     VendorResponse toRead(BaseUser baseUser);
     List<VendorResponse> toRead(List<BaseUser> baseUsers);
+    VendorCreateResponse toResponse(BaseUser baseUser);
+    //EmployeeUpdateResponse toUpdated(Employee employee);
+
 }

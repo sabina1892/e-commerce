@@ -189,13 +189,9 @@ public class UtilService {
     public List<Product> findByProductInCategoryId(Long categoryId) {
         return productRepository.findByCategoryId(categoryId);
     }
-   /* public Vendor findByVendorId(UUID id) {
+    public Vendor findByVendorId(UUID id) {
         return vendorRepository.findById(id)
                 .orElseThrow(() -> new VendorNotFoundException("No such vendor found."));
-    }*/
-    public List<BaseUser> findAllExistVendor() {
-        return baseUserRepository.findAllVendor();
     }
-
 
 }

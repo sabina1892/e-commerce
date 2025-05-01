@@ -1,10 +1,7 @@
 package com.rustam.e_commerce.dto.request;
 
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.UUID;
 
@@ -12,10 +9,16 @@ import java.util.UUID;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class VendorRequestCreate {
+public class VendorCreateRequest {
     @NotNull(message = "The id column cannot be empty.")
     private UUID id;
+    private String name;
+    private String surname;
     private String username;
     private String email;
     private String password;
+    private String phone;
+    private Boolean enabled;
+
+
 }
