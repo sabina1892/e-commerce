@@ -1,6 +1,7 @@
 package com.rustam.e_commerce.dao.entity;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -8,16 +9,8 @@ import java.util.UUID;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.rustam.e_commerce.dao.entity.enums.OrderStatus;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import com.rustam.e_commerce.dao.entity.user.Vendor;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import lombok.*;
 
@@ -55,4 +48,9 @@ public class Order {
 
     private Double totalAmount;
     private OrderStatus orderStatus;
+
+    @ManyToOne
+    private Vendor vendor;
+
+    private LocalDateTime localDateTime;
 }

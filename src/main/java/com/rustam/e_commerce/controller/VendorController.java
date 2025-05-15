@@ -2,6 +2,7 @@ package com.rustam.e_commerce.controller;
 
 import com.rustam.e_commerce.dto.request.VendorCreateRequest;
 import com.rustam.e_commerce.dto.request.VendorUpdateRequest;
+import com.rustam.e_commerce.dto.response.VendorAnalyticResponse;
 import com.rustam.e_commerce.dto.response.VendorCreateResponse;
 
 import com.rustam.e_commerce.dto.response.VendorUpdateResponse;
@@ -40,5 +41,9 @@ public class VendorController {
     @PutMapping("/{id}")
     public ResponseEntity<VendorUpdateResponse> updateVendor(@PathVariable UUID id, @RequestBody VendorUpdateRequest request) {
         return ResponseEntity.ok(vendorService.updateVendor(id, request));
+    }
+    @GetMapping("/{id}/analytics")
+    public ResponseEntity<VendorAnalyticResponse> analytic(@PathVariable UUID id) {
+        return ResponseEntity.ok(vendorService.getVendorAnalytics(id));
     }
 }

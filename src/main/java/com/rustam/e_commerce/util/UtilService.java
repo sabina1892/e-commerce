@@ -38,6 +38,8 @@ public class UtilService {
     FavoriteRepository favoriteRepository;
     RedisTemplate<String,String> redisTemplate;
     private final VendorRepository vendorRepository;
+    private final OrderRepository orderRepository;
+    private final OrderItemRepository orderItemRepository;
 
     public BaseUser findByUsername(String username) {
         return baseUserRepository.findByUsername(username)
@@ -192,6 +194,18 @@ public class UtilService {
     public Vendor findByVendorId(UUID id) {
         return vendorRepository.findById(id)
                 .orElseThrow(() -> new VendorNotFoundException("No such vendor found."));
+    }
+    public Object[] orderStats(UUID id) {
+        return orderRepository.getOrderCountAndRevenue(id);
+    }
+    public List<Object[]> monthlySales(UUID id) {
+        return orderRepository.getMonthlySales(id);
+    }
+    public List<Object[]> statusStats(UUID id) {
+        return orderRepository.getOrderStatus(id);
+    }
+    public List<Object[]> topProducts(UUID id) {
+        return orderItemRepository.getTopProducts(id);
     }
 
 }

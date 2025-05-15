@@ -3,6 +3,7 @@ package com.rustam.e_commerce.mapper;
 import com.rustam.e_commerce.dao.entity.user.BaseUser;
 import com.rustam.e_commerce.dto.response.VendorCreateResponse;
 import com.rustam.e_commerce.dto.response.VendorResponse;
+import com.rustam.e_commerce.dto.response.order.OrderStatsResponse;
 import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
@@ -22,4 +23,4 @@ public interface VendorMapper {
     VendorCreateResponse toResponse(BaseUser baseUser);
     //EmployeeUpdateResponse toUpdated(Employee employee);
 
-}
+   }
